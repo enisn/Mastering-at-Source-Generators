@@ -5,31 +5,31 @@ namespace {{PrefferredNamespace}}.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class {{ClassName}}Controller : ControllerBase
+public partial class {{ClassName}}Controller : ControllerBase
 {
     private static readonly List<{{ClassName}}> _collection = new();
 
     [HttpGet]
-    public List<{{ClassName}}> Get()
+    public virtual List<{{ClassName}}> Get()
     {
         return _collection;
     }
 
     [HttpGet("id")]
-    public {{ClassName}} GetSingle(Guid id)
+    public virtual {{ClassName}} GetSingle(Guid id)
     {
         return _collection.SingleOrDefault(x => x.Id == id);
     }
 
     [HttpPost]
-    public void Create({{ClassName}} item)
+    public virtual void Create({{ClassName}} item)
     {
         item.Id = Guid.NewGuid();
         _collection.Add(item);
     }
 
     [HttpPut("id")]
-    public void Update(Guid id, {{ClassName}} item)
+    public virtual void Update(Guid id, {{ClassName}} item)
     {
         var existing = _collection.Single(x => x.Id == id);
 
@@ -39,7 +39,7 @@ public class {{ClassName}}Controller : ControllerBase
     }
 
     [HttpDelete("id")]
-    public void Delete(Guid id)
+    public virtual void Delete(Guid id)
     {
         var existing = _collection.Single(x => x.Id == id);
 

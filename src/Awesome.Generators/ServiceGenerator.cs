@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
+using System.Diagnostics;
 using System.Text;
 
 namespace Awesome.Generators;
@@ -31,7 +32,7 @@ public class ServiceGenerator : ISourceGenerator
             // Finding my GenerateServiceAttribute over it. I'm sure this attribute is placed, because my syntax receiver already checked before.
             // So, I can surely execute following query.
             var attribute = classSyntax.AttributeLists.SelectMany(sm => sm.Attributes).First(x => x.Name.ToString().EnsureEndsWith("Attribute").Equals(typeof(GenerateServiceAttribute).Name));
-            
+
             // Getting constructor parameter of the attribute. It might be not presented.
             var templateParameter = attribute.ArgumentList?.Arguments.FirstOrDefault()?.GetLastToken().ValueText; // Temprorary... Attribute has only one argument for now.
 
