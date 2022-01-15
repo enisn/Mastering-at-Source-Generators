@@ -1,0 +1,48 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using Awesome.Api.Data;
+using {{Namespace}};
+
+namespace {{PrefferredNamespace}}.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public partial class {{ClassName}}Controller : ControllerBase
+{
+    private readonly IRepository<{{ClassName}}> _repository;
+
+    public {{ClassName}}Controller(IRepository<{{ClassName}}> repository)
+    {
+        _repository = repository;
+    }
+        
+    [HttpGet]
+    public virtual Task<List<{{ClassName}}>> GetListAsync()
+    {
+        return _repository.GetListAsync();
+    }
+        
+    [HttpGet("{id}")]
+    public virtual Task<{{ClassName}}> GetSingleAsync(Guid id)
+    {
+        return _repository.GetSingleAsync(id);
+    }
+
+    [HttpPost]
+    public virtual async Task CreateAsync({{ClassName}} item)
+    {
+        await _repository.InsertAsync(item);
+    }
+
+    [HttpPut("{id}")]
+    public virtual async Task CreateAsync(Guid id, {{ClassName}} item)
+    {
+        await _repository.UpdateAsync(id, item);
+    }
+
+    [HttpDelete("{id}")]
+    public virtual async Task DeleteAsync(Guid id)
+    {
+        await _repository.DeleteAsync(id);
+    }
+}

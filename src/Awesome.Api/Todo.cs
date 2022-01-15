@@ -3,7 +3,7 @@ using Awesome.Generators;
 
 namespace Awesome.Api;
 
-[GenerateService]
+[GenerateService("RepositoryController.txt")]
 public class Todo : IIdentifiable
 {
     public Guid Id { get; set; }
