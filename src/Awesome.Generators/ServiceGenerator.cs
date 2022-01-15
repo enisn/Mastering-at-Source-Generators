@@ -12,6 +12,6 @@ public class ServiceGenerator : ISourceGenerator
 
     public void Initialize(GeneratorInitializationContext context)
     {
-        throw new NotImplementedException();
+        context.RegisterForSyntaxNotifications(() => new AttributeSyntaxReceiver<GenerateServiceAttribute>());
     }
 }
