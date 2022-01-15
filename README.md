@@ -1,2 +1,2 @@
 # Mastering at Source Generators
- Mastering at Source Generators example
+ Source code of Mastering at Source Generators article on Medium
