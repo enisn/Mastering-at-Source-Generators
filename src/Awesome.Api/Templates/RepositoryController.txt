@@ -35,7 +35,7 @@ public partial class {{ClassName}}Controller : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public virtual async Task CreateAsync(Guid id, {{ClassName}} item)
+    public virtual async Task UpdateAsync(Guid id, {{ClassName}} item)
     {
         await _repository.UpdateAsync(id, item);
     }
