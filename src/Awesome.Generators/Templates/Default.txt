@@ -15,7 +15,7 @@ public partial class {{ClassName}}Controller : ControllerBase
         return _collection;
     }
 
-    [HttpGet("id")]
+    [HttpGet("{id}")]
     public virtual {{ClassName}} GetSingle(Guid id)
     {
         return _collection.SingleOrDefault(x => x.Id == id);
@@ -28,7 +28,7 @@ public partial class {{ClassName}}Controller : ControllerBase
         _collection.Add(item);
     }
 
-    [HttpPut("id")]
+    [HttpPut("{id}")]
     public virtual void Update(Guid id, {{ClassName}} item)
     {
         var existing = _collection.Single(x => x.Id == id);
@@ -38,7 +38,7 @@ public partial class {{ClassName}}Controller : ControllerBase
         _collection.Add(item);
     }
 
-    [HttpDelete("id")]
+    [HttpDelete("{id}")]
     public virtual void Delete(Guid id)
     {
         var existing = _collection.Single(x => x.Id == id);
